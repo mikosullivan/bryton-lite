@@ -59,7 +59,7 @@ in which a test fails.
 
 In this example one of the tests fails. The script could have simply set
 `success` to false, but instead it gives a little more information by creating
-the `erros` array and adding a message to it. Notice that `success` is never
+the `errors` array and adding a message to it. Notice that `success` is never
 explicitly set. That's because the presence of an error implies failure.
 
 #### Bryton::Lite::Tests.assert
