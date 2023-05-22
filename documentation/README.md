@@ -158,3 +158,10 @@ Here is a sample output from a script run. (JSON doesn't allow comments, but
 I've added some here for clarity.
 
 [import]: {"path": "runner/nested.js", "file-type":"javascript"}
+
+## History
+
+| date         | version | notes                                       |
+|--------------|---------|---------------------------------------------|
+| May 22, 2023 | 1.0     | Initial upload                              |
+| May 22, 2023 | 1.1     | Added refute, assert_equal and refute_equal |

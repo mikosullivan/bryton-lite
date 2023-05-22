@@ -360,9 +360,30 @@ module Bryton::Lite::Tests
 		return JSON.generate(@hsh)
 	end
 	
-	# assert
+	# Asserts a condition as true. Fails if condition is not true
 	def self.assert(bool, id=nil, level=0, &block)
 		if not bool
+			fail id, 1, &block
+		end
+	end
+	
+	# Asserts a condition as false. Fails if condition is true.
+	def self.refute(bool, id=nil, level=0, &block)
+		if bool
+			fail id, 1, &block
+		end
+	end
+	
+	# Asserts that two objects are equal according to ==. Fails if they are not.
+	def self.assert_equal(expected, actual, id=nil, level=0, &block)
+		if not (expected == actual)
+			fail id, 1, &block
+		end
+	end
+	
+	# Asserts that two objects are not equal according to ==. Fails if they are.
+	def self.refute_equal(expected, actual, id=nil, level=0, &block)
+		if (expected == actual)
 			fail id, 1, &block
 		end
 	end

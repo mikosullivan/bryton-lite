@@ -103,18 +103,8 @@ class BrytonLiteTest < Minitest::Test
 		refute Bryton::Lite::Tests['errors']
 	end
 	
-	# test that the resolve method overrides success if there are errors
-	# def test_resolve
-	#	Bryton::Lite::Tests.reset()
-	#	Bryton::Lite::Tests.errors.push({})
-	#	Bryton::Lite::Tests['success'] = true
-	#	Bryton::Lite::Tests.resolve
-	#	refute Bryton::Lite::Tests['success']
-	# end
-	
-	# success_first
-	# Tests the success_first method
-	def test_success_first
+	# Tests the reorder_results method
+	def test_reorder_results
 		# reset
 		Bryton::Lite::Tests.reset()
 		Bryton::Lite::Tests.hsh['errors'] = []
@@ -151,7 +141,7 @@ class BrytonLiteTest < Minitest::Test
 		check_key_order Bryton::Lite::Tests.hsh
 	end
 	
-	# test that 'success' is the first key in a hash
+	# Recursive function for testing reorder_results in each nested hash.
 	def check_key_order(hsh)
 		# "success" key should be first
 		if hsh.has_key?('success')
@@ -169,5 +159,48 @@ class BrytonLiteTest < Minitest::Test
 				check_key_order child
 			end
 		end
+	end
+	
+	# Test equality and inequality of hashes and arrays.
+	def test_structue_equality
+		# two hashes the same
+		expected = { 'a'=>true}
+		actual = { 'a'=>true}
+		Bryton::Lite::Tests.assert_equal expected, actual
+		
+		# two hashes different
+		expected = { 'a'=>true}
+		actual = { 'a'=>false}
+		Bryton::Lite::Tests.refute_equal expected, actual
+		
+		# two arrays the same
+		expected = ['a']
+		actual = ['a']
+		Bryton::Lite::Tests.assert_equal expected, actual
+		
+		# two arrays different
+		expected = ['a']
+		actual = ['b']
+		Bryton::Lite::Tests.refute_equal expected, actual
+		
+		# hashes, nested, the same
+		expected = { 'a'=>{'a.a'=>true, 'a.b'=>{}}}
+		actual = { 'a'=>{'a.a'=>true, 'a.b'=>{}}}
+		Bryton::Lite::Tests.assert_equal expected, actual
+		
+		# hashes, nested, different
+		expected = { 'a'=>{'a.a'=>true, 'a.b'=>{'a.b.a'=>1}}}
+		actual = { 'a'=>{'a.a'=>true, 'a.b'=>{}}}
+		Bryton::Lite::Tests.refute_equal expected, actual
+		
+		# hashes, nested with arrays, the same
+		expected = { 'a'=>{'a.a'=>[1,2,3]} }
+		actual = { 'a'=>{'a.a'=>[1,2,3]} }
+		Bryton::Lite::Tests.assert_equal expected, actual
+		
+		# hashes, nested with arrays, different
+		expected = { 'a'=>{'a.a'=>[1,2,3]} }
+		actual = { 'a'=>{'a.a'=>[1,3,2]} }
+		Bryton::Lite::Tests.refute_equal expected, actual
 	end
 end
