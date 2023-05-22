@@ -1,0 +1,187 @@
+{
+  "file": {
+    "path": ".",
+    "dir": true
+  },
+  "nested": [
+    {
+      "file": {
+        "path": "./empty.rb"
+      },
+      "success": false,
+      "errors": [
+        {
+          "id": "no-results"
+        }
+      ]
+    },
+    {
+      "file": {
+        "path": "./contradiction",
+        "dir": true
+      },
+      "nested": [
+        {
+          "file": {
+            "path": "./contradiction/fail.rb"
+          },
+          "success": false,
+          "errors": [
+            {
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": {
+        "path": "./nil.rb"
+      }
+    },
+    {
+      "file": {
+        "path": "./succeed.rb"
+      },
+      "success": true
+    },
+    {
+      "file": {
+        "path": "./crash",
+        "dir": true
+      },
+      "nested": [
+        {
+          "file": {
+            "path": "./crash/crash.rb"
+          },
+          "success": false,
+          "errors": [
+            {
+              "id": "execution-failed",
+              "stderr": "./crash.rb:2:in `<main>': uninitialized constant NonExistentConstant (NameError)\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": {
+        "path": "./invalid.rb"
+      },
+      "success": false,
+      "errors": [
+        {
+          "id": "invalid-json"
+        }
+      ]
+    },
+    {
+      "file": {
+        "path": "./fail.rb"
+      },
+      "errors": [
+        {
+          "line": 4
+        }
+      ],
+      "success": false
+    },
+    {
+      "file": {
+        "path": "./try",
+        "dir": true
+      },
+      "nested": [
+        {
+          "file": {
+            "path": "./try/errors.rb"
+          },
+          "errors": [
+            {
+            }
+          ],
+          "success": false
+        },
+        {
+          "file": {
+            "path": "./try/succeed.rb"
+          },
+          "success": true
+        },
+        {
+          "file": {
+            "path": "./try/fail.rb"
+          },
+          "errors": [
+            {
+              "line": 4
+            }
+          ],
+          "success": false
+        }
+      ]
+    },
+    {
+      "file": {
+        "path": "./fail-succeed",
+        "dir": true
+      },
+      "nested": [
+        {
+          "file": {
+            "path": "./fail-succeed/crash.rb"
+          },
+          "success": false,
+          "errors": [
+            {
+              "id": "execution-failed",
+              "stderr": "/home/miko/projects/exports/working/bryton-lite/gem/lib/bryton/lite.rb:257:in `succeed': cannot-set-to-success (RuntimeError)\n\tfrom ./crash.rb:6:in `<main>'\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": {
+        "path": "./nested",
+        "dir": true
+      },
+      "nested": [
+        {
+          "file": {
+            "path": "./nested/crash.rb"
+          },
+          "success": false,
+          "errors": [
+            {
+              "id": "execution-failed",
+              "stderr": "./crash.rb:2:in `<main>': uninitialized constant NonExistentConstant (NameError)\n"
+            }
+          ]
+        },
+        {
+          "file": {
+            "path": "./nested/nil.rb"
+          }
+        },
+        {
+          "file": {
+            "path": "./nested/succeed.rb"
+          },
+          "success": true
+        },
+        {
+          "file": {
+            "path": "./nested/fail.rb"
+          },
+          "errors": [
+            {
+              "line": 4
+            }
+          ],
+          "success": false
+        }
+      ]
+    }
+  ]
+}

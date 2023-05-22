@@ -1,0 +1,9 @@
+test results include file name and line number
+
+test can add arbitrary information
+
+errors are nested according to file name and directory
+
+results indicate if a test script crashed or failed to output parseable information
+
+crashes include STDERR
